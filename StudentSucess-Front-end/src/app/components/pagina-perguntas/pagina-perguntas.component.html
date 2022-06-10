@@ -1,0 +1,45 @@
+<div class="body">
+
+  <header class="header">
+    <a class="navbar-logo" routerLink="/home">
+      
+    </a>
+  </header>
+
+  <div class="flex-container">
+
+
+
+    <mat-card class="form">
+
+      <form action="" id="main-form">
+        <h1> Questionário</h1>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Digite seu e-mail</mat-label>
+          <input type="text" matInput name="email" [(ngModel)]="formularioResposta.email">
+          <mat-error>
+            Este campo é obrigatório
+          </mat-error>
+        </mat-form-field>
+
+
+        <span [(ngModel)]="questao.selecao" name="selecao" ngDefaultControl
+          *ngFor="let questao of formularioResposta.questoes; let i = index">
+          <h3><strong> {{i + 1 + ') ' + questao.enunciado }}</strong></h3>
+
+          <mat-radio-group required>
+
+            <mat-radio-button  *ngFor="let item of questao.alternativas" [value]="item"> {{item}} </mat-radio-button>
+
+          </mat-radio-group>
+
+        </span>
+
+        <button class="btn" mat-raised-button color="primary" type="submit" style="margin-top: 10px;"
+          (click)="enviarFormulario()">Enviar formulário</button>
+
+      </form>
+    </mat-card>
+  </div>
+  </div>

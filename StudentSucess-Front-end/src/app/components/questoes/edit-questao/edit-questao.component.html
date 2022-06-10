@@ -1,0 +1,39 @@
+<header class="header">
+  <a class="navbar-logo" routerLink="/home">
+    
+  </a>
+</header>
+
+<div class="flex-container">
+    <button mat-mini-fab color="primary" routerLink="/questoes/lista-questao">
+      <mat-icon>
+        arrow_left
+      </mat-icon>
+    </button>
+
+    <mat-card class="form">
+      <form action="" id="main-form" [formGroup]="formulario"
+      (ngSubmit)="editarQuestao(questao.id||0)">
+
+      <h1>Editar questão</h1>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Enunciado da questão</mat-label>
+        <input type="text" matInput formControlName="enunciado" name="enunciado" [(ngModel)]="questao.enunciado">
+        <mat-error>
+          Este campo é obrigatório
+        </mat-error>
+    </mat-form-field>
+
+   
+    <h3>Alternativas:</h3>
+
+    <span *ngFor="let alternativa of questao.alternativas; let i = index">
+        {{alternativa}}
+    </span>
+
+      <button class="btn" mat-raised-button color="primary" type="submit" style="margin-top: 10px;" [disabled]="!validarCampos()"> Editar</button>
+
+      </form>
+    </mat-card>
+  </div>
